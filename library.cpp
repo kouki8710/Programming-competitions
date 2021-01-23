@@ -3,7 +3,8 @@
 using namespace std;
 using ll = long long;
 using ld = long double;
-#define INF 100000000
+#define INF 1000000000
+#define INFL 1000000000000000000
 #define rep(i, s, n) for (int i = (int)(s); i < (int)(n); i++)
 #define repp(i, n, s) for (int i = (int)(n); i >= (int)(s); i--)
 #define mp make_pair

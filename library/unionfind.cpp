@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// i=0から
 struct UnionFind {
     int _n;
     vector<int> par, siz;
