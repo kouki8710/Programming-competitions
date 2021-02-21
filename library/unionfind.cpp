@@ -3,10 +3,10 @@ using namespace std;
 
 // i=0から
 struct UnionFind {
-    int _n;
+    int _n, join_size;
     vector<int> par, siz;
 
-    UnionFind(int n) : par(n), siz(n, 1) {
+    UnionFind(int n) : par(n), siz(n, 1), join_size(n) {
         _n = n;
         for (int i = 0; i < n; i++) par[i] = i;
     }
@@ -24,6 +24,7 @@ struct UnionFind {
         // rx>=ry rxが親
         siz[rx] += siz[ry];
         par[ry] = rx;  //rxにryを結合
+        join_size--;
         return rx;
     }
 
