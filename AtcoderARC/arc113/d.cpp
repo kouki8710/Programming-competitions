@@ -11,16 +11,9 @@ using ld = long double;
 #define tp make_tuple
 typedef pair<int,int> P;
 typedef pair<ll,ll> PL;
-typedef pair<pair<ll,ll>,ll> PPL;
 typedef tuple<int,int,int> T;
 typedef tuple<ll,ll,ll> TL;
-ll mod = 1000000007;
-ll mod2 = 998244353;
-
-int main() {
-    cin.tie(0);
-    ios::sync_with_stdio(false);
-}
+ll mod = 998244353;
 
 ll modpow(ll a, ll b) {
     ll r = 1;
@@ -42,4 +35,29 @@ ll comb(ll N_, ll C_) {
     }
     if (C_ < 0 || C_ > N_) return 0;
     return factr[C_] * fact[N_] % mod * factr[N_ - C_] % mod;
+}
+
+int main() {
+    cin.tie(0);
+    ios::sync_with_stdio(false);
+    ll n,m,k;cin>>n>>m>>k;
+    if (n==1 || m==1){
+        if (n==1 && m==1){
+            cout<<k<<endl;
+        }else if(n==1){
+            cout<<modpow(k,m)<<endl;
+        }else if(m==1){
+            cout<<modpow(k,n)<<endl;
+        }
+        return 0;
+    }
+
+    ll ans = 0;
+    rep(i,1,k+1){
+        ll num = (modpow(i,n)-modpow(i-1,n)+mod)%mod;
+        ll num2 = modpow(k-i+1,m);
+        num = (num*num2)%mod;
+        ans = (ans+num)%mod;
+    }
+    cout<<ans%mod<<endl;
 }
